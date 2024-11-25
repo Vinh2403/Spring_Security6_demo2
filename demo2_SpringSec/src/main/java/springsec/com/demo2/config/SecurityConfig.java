@@ -47,11 +47,15 @@ public class SecurityConfig {
 	return http.csrf(csrf -> csrf.disable())
 	.authorizeHttpRequests(auth -> auth
 	.requestMatchers("/user/new").permitAll()
-	.requestMatchers("/").permitAll()
+	//.requestMatchers("/").permitAll()
+	.requestMatchers("/hello").permitAll()
 	.requestMatchers("/customer/**").authenticated()
 	//.anyRequest().authenticated()
+	
 	)
-	.formLogin(Customizer.withDefaults())
+	.formLogin(form -> form
+            .defaultSuccessUrl("/hello", true) // Chuyển hướng mặc định sau đăng nhập
+        )
 	.build();
 	}
 }
