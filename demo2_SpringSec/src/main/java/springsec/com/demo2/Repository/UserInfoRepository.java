@@ -1,0 +1,13 @@
+package springsec.com.demo2.Repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import springsec.com.demo2.entity.UserInfo;
+
+@Repository
+public interface UserInfoRepository extends JpaRepository<UserInfo, Integer>{
+Optional<UserInfo> findByName(String username);
+}
